@@ -1,0 +1,41 @@
+/target/
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+invoice-*.html
+
+/dist/
+
+# Company records and machine-specific state must never enter source history.
+/database/
+*.sqlite
+*.sqlite3
+*.sqlite-journal
+*.sqlite-wal
+*.sqlite-shm
+*.ui.json
+*.windows.json
+*.software-test.json
+preferences.json
+*.cli-validation.json
+
+# Credentials, exported documents and local tooling output.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.pfx
+*.p12
+*.log
+*.pdf
+*.csv
+*.exe
+*.zip
+__pycache__/
+.vscode/
+.idea/
+
+# Internal reference artwork may contain customer information.
+/docs/prototypes/

@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Invoice {{NUMBER}}</title>
+<style>
+@page { size: Letter; margin: 16mm; }
+* { box-sizing: border-box; }
+body { font: 14px Arial, sans-serif; color: #243746; max-width: 900px; margin: 40px auto; padding: 24px; line-height: 1.5; }
+header { border-bottom: 3px solid {{ACCENT}}; padding-bottom: 20px; }
+h1, h2 { color: {{ACCENT}}; }
+h1 { margin: 28px 0 12px; font-size: 32px; letter-spacing: 2px; }
+header h2 { margin: 0 0 8px; }
+p { margin: 6px 0; }
+.meta { display: flex; justify-content: space-between; gap: 24px; margin: 20px 0; }
+table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+th { background: #f0f4f3; text-align: left; font-size: 12px; }
+th, td { padding: 11px 9px; border-bottom: 1px solid #e4e9e7; vertical-align: top; overflow-wrap: anywhere; }
+thead { display: table-header-group; }
+tr { break-inside: avoid; }
+.num { text-align: right; }
+.total { font-size: 23px; font-weight: bold; color: {{ACCENT}}; }
+.summary { margin-left: auto; text-align: right; break-inside: avoid; }
+.muted, footer { color: #64756d; }
+.notes { margin-top: 28px; border-top: 1px solid #e4e9e7; padding-top: 16px; break-inside: avoid; }
+footer { margin-top: 24px; font-size: 12px; }
+@media print { body { margin: 0; padding: 0; max-width: none; } th { print-color-adjust: exact; } }
+</style>
+</head>
+<body>
+<header><h2>{{COMPANY_NAME}}</h2><p>{{COMPANY_ADDRESS}}</p><p>{{COMPANY_CONTACT}}</p><p>Tax registration: {{COMPANY_TAX_NUMBER}}</p></header>
+<h1>INVOICE {{NUMBER}}</h1>
+<div class="meta"><div><strong>Bill to</strong><p>{{CUSTOMER}}</p><p>Project: {{PROJECT}}</p></div><div>{{DATES}}<p>Status: {{STATUS}}</p></div></div>
+{{TASKS}}
+<table><thead><tr><th>Description</th><th>Unit</th><th class="num">Quantity</th><th class="num">Unit price ({{CURRENCY}})</th><th class="num">Amount ({{CURRENCY}})</th><th>Tax code</th></tr></thead><tbody>{{ROWS}}</tbody></table>
+<div class="summary">{{TAX_SUMMARY}}<p class="total">Total: {{CURRENCY}} {{TOTAL}}</p><p>{{RECEIPTS}}</p></div>
+<section class="notes"><strong>Payment terms</strong><p>{{PAYMENT_TERMS}}</p><strong>Payment instructions</strong><p>{{PAYMENT_INSTRUCTIONS}}</p></section>
+<footer>{{FOOTER}}</footer>
+</body>
+</html>
